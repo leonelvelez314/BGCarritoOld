@@ -1,7 +1,7 @@
 <ion-view view-title="Producto">
   <ion-content>
     <div class="flex column center-x"> 
-      <img ng-src="img/{{producto.imagen}}" width="370px">
+      <img ng-src="img/{{producto.imagen}}" onerror="this.src='img/default.jpg'" width="370px">
       <section class="flex column descripcion-detalle">
         <h2>{{producto.precio}}</h2>
         <p>{{producto.detalle}}</p>

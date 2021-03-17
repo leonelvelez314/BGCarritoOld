@@ -3,7 +3,7 @@
     <ion-list >
       <ion-item  ng-repeat="producto in productos" href="#/app/products/{{producto.id}}" lines='none'>
         <div class="flex column producto">
-          <img ng-src="img/{{producto.imagen}}" width="180px">
+          <img ng-src="img/{{producto.imagen}}" onerror="this.src='img/default.jpg'" width="180px">
           <section class="flex column descripcion">
               <h2>{{producto.descripcion}}</h2>
               <p>{{producto.precio}}</p>
