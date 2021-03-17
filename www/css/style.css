@@ -51,5 +51,11 @@
 }
 .descripcion-selecc p
 {
-    max-width: 120px;
+    max-width: 140px;
+}
+
+#close{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
