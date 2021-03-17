@@ -3,7 +3,7 @@
     <div class="flex column center-x"> 
       <img ng-src="img/{{producto.imagen}}" onerror="this.src='img/default.jpg'" width="370px">
       <section class="flex column descripcion-detalle">
-        <h2>{{producto.precio}}</h2>
+        <h2>{{'$'+producto.precio}}</h2>
         <p>{{producto.detalle}}</p>
         <button class="button button-full button-positive" ng-click="addCar()"   ng-disabled="existe">
             ADD TO CAR
