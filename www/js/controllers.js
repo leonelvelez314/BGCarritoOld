@@ -170,7 +170,12 @@ angular.module('starter.controllers', [])
 .controller('CarCtrl', function($scope) {
    
   $scope.productosSelecc  = JSON.parse(localStorage.getItem( 'productosSeleccionados'))
-  
+  $scope.quitar = function(key)
+  {
+    $scope.productosSelecc.splice(key, 1)
+    console.log(key)
+    localStorage.setItem( 'productosSeleccionados', JSON.stringify($scope.productosSelecc) )
+  }  
 
 });
 

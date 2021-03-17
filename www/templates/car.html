@@ -2,18 +2,20 @@
   <ion-content>
 
     
-      <ion-item ng-repeat="productoSeleec in productosSelecc">
+      <ion-item ng-repeat="(key,productoSeleec) in productosSelecc track by $index">
         <div class="flex row center-x selecc"> 
           <img ng-src="img/{{productoSeleec.imagen}}" onerror="this.src='img/default.jpg'" width="100px">
           <section class="flex column descripcion-selecc">
             <h2>{{'$'+productoSeleec.precio}}</h2>
             <p >{{productoSeleec.descripcion}}</p>         
-            <p id="close">&#10005;</p>
+            <p id="close" ng-click="quitar(key)" >&#10005;</p>
           </section>
           
         </div>
         
         
       </ion-item>
+
+      
   </ion-content>
 </ion-view>
