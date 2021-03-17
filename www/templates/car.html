@@ -1,7 +1,9 @@
 <ion-view view-title="Car">
-  <ion-content>
-
-    
+  <div class="footer" >hola</div>
+  <ion-content>    
+    <div id="car">
+     
+      
       <ion-item ng-repeat="(key,productoSeleec) in productosSelecc track by $index">
         <div class="flex row center-x selecc"> 
           <img ng-src="img/{{productoSeleec.imagen}}" onerror="this.src='img/default.jpg'" width="100px">
@@ -9,13 +11,11 @@
             <h2>{{'$'+productoSeleec.precio}}</h2>
             <p >{{productoSeleec.descripcion}}</p>         
             <p id="close" ng-click="quitar(key)" >&#10005;</p>
-          </section>
-          
-        </div>
-        
-        
+          </section>          
+        </div>                
       </ion-item>
-
       
+    </div>
+        
   </ion-content>
 </ion-view>
