@@ -69,12 +69,20 @@
     align-items: flex-end;
     padding: 20px;
     background: #f8f8f8;
+    flex-direction: row;
+    justify-content:  space-between;
     z-index: 900;
     color: #FFF;
     opacity: 1;
     color: black;
         
 }
+
+.footer p{
+    font-size: 20px;
+    font-weight: 400;
+}
+
 #car{
     margin-top: 100px;
 }
