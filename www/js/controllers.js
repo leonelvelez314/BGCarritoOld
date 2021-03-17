@@ -58,16 +58,15 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ProductsCtrl', function($scope) {
+.controller('ProductsCtrl', function($scope, $http) {
   
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+  $http.post('https://rolimapp.com:3000/productos', {transaccion:'generico', tipo:'4'}).then(function(respuesta){
+    console.log(respuesta.data)
+    $scope.productos  = respuesta.data.data;
+  }, function(errorResponse){
+    console.log(errorResponse);
+  });
+  
 })
 
 .controller('DetalleCtrl', function($scope, $stateParams) {
