@@ -32,7 +32,8 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ProductsCtrl', function($scope, $http) {
-  
+  console.log(localStorage.getItem( 'token'));
+
   $http.post('https://rolimapp.com:3000/productos', {transaccion:'generico', tipo:'4'}).then(function(respuesta){
     
     $scope.productos  = respuesta.data.data;
@@ -43,20 +44,89 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('DetalleCtrl', function($scope, $stateParams, $http) {
+.controller('DetalleCtrl', function($scope, $stateParams, $http,  $window) {
   $http.post('https://rolimapp.com:3000/productos', {transaccion:'generico', tipo:'4'}).then(function(respuesta){
-    
+    $scope.existe = false;
     $scope.productos  = respuesta.data.data;
+
+    let productosSelecc = JSON.parse(localStorage.getItem('productosSeleccionados'));     
+      var listProductosSelec = new Array();
+      listProductosSelec = productosSelecc;
+
+      if(productosSelecc !== null)
+      {
+          if(productosSelecc.length >= 0)
+          {
+            let existe = false
+            angular.forEach(listProductosSelec, function(obj, key){
+                if(Number(obj.id) === Number($stateParams.productid))
+                {
+                  existe = true;
+                }
+            });
+  
+            if(existe)
+            {
+              $scope.existe = true;
+            }
+          }
+     
+      }
+      
+
+
+
+
+
     angular.forEach($scope.productos, function(value, key){
       
       if(Number(value.id) === Number($stateParams.productid))
       {
         
+      
         $scope.producto = value;
       }
       
 
     });
+
+    $scope.addCar = function()
+    {
+      let productosSelecc = JSON.parse(localStorage.getItem('productosSeleccionados'));     
+      var listProductosSelec = new Array();
+      listProductosSelec = productosSelecc;
+
+      if(productosSelecc !== null)
+      {
+        if(productosSelecc.length === 0)
+        {
+          listProductosSelec.push($scope.producto);
+          localStorage.setItem('productosSeleccionados', JSON.stringify(listProductosSelec) );       
+
+        }else{
+          let existe = false
+          angular.forEach(listProductosSelec, function(obj, key){
+              if(Number(obj.id) === Number($stateParams.productid))
+              {
+                existe = true;
+              }
+          });
+
+          if(!existe)
+          {
+            listProductosSelec.push($scope.producto);
+            localStorage.setItem('productosSeleccionados',  JSON.stringify(listProductosSelec));        
+          }
+        }
+      }else{
+        listProductosSelec.push($scope.producto);
+        localStorage.setItem('productosSeleccionados',  JSON.stringify(listProductosSelec));        
+      }
+
+      $window.location.href = '#/app/products'     
+
+
+    }
     
     
     
@@ -98,5 +168,11 @@ angular.module('starter.controllers', [])
     });
     
   };
+})
+
+
+.controller('CarCtrl', function($scope) {
+   
+  console.log(JSON.parse(localStorage.getItem( 'productosSeleccionados')))
 });
 

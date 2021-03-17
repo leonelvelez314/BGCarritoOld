@@ -51,7 +51,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/car',
       views: {
         'menuContent': {
-          templateUrl: 'templates/car.html'
+          templateUrl: 'templates/car.html',
+          controller : 'CarCtrl'
         }
       }
     })

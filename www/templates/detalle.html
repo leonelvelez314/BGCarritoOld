@@ -5,7 +5,7 @@
       <section class="flex column descripcion-detalle">
         <h2>{{producto.precio}}</h2>
         <p>{{producto.detalle}}</p>
-        <button class="button button-full button-positive">
+        <button class="button button-full button-positive" ng-click="addCar()"   ng-disabled="existe">
             ADD TO CAR
         </button>
       </section>
