@@ -36,7 +36,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.browse', {
+  .state('app.car', {
       url: '/car',
       views: {
         'menuContent': {
