@@ -74,10 +74,6 @@ angular.module('starter.controllers', [])
       }
       
 
-
-
-
-
     angular.forEach($scope.productos, function(value, key){
       
       if(Number(value.id) === Number($stateParams.productid))
@@ -173,6 +169,8 @@ angular.module('starter.controllers', [])
 
 .controller('CarCtrl', function($scope) {
    
-  console.log(JSON.parse(localStorage.getItem( 'productosSeleccionados')))
+  $scope.productosSelecc  = JSON.parse(localStorage.getItem( 'productosSeleccionados'))
+  
+
 });
 

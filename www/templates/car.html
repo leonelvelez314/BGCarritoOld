@@ -1,5 +1,15 @@
 <ion-view view-title="Car">
   <ion-content>
+
     
+      <ion-item ng-repeat="productoSeleec in productosSelecc">
+        <div class="flex row center-x selecc"> 
+          <img ng-src="img/{{productoSeleec.imagen}}" onerror="this.src='img/default.jpg'" width="100px">
+          <section class="flex column descripcion-selecc">
+            <h2>{{productoSeleec.precio}}</h2>
+            <p >{{productoSeleec.descripcion}}</p>         
+          </section>
+        </div>
+      </ion-item>
   </ion-content>
 </ion-view>

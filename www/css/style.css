@@ -38,3 +38,18 @@
 {
     padding: 30px;
 }
+
+.descripcion-selecc
+{
+    
+    padding: 10px;
+}
+
+.selecc
+{
+    justify-content: start;
+}
+.descripcion-selecc p
+{
+    max-width: 120px;
+}
