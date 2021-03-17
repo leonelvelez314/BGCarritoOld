@@ -70,5 +70,25 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('DetalleCtrl', function($scope, $stateParams) {
+.controller('DetalleCtrl', function($scope, $stateParams, $http) {
+  $http.post('https://rolimapp.com:3000/productos', {transaccion:'generico', tipo:'4'}).then(function(respuesta){
+    
+    $scope.productos  = respuesta.data.data;
+    angular.forEach($scope.productos, function(value, key){
+      
+      if(Number(value.id) === Number($stateParams.productid))
+      {
+        
+        $scope.producto = value;
+      }
+      
+
+    });
+    
+    
+    
+  }, function(errorResponse){
+    console.log(errorResponse);
+  });
+  
 });

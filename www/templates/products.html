@@ -1,7 +1,7 @@
 <ion-view view-title="Products">
   <ion-content>
     <ion-list >
-      <ion-item  ng-repeat="producto in productos" href="#/app/products/{{playlist.id}}" lines='none'>
+      <ion-item  ng-repeat="producto in productos" href="#/app/products/{{producto.id}}" lines='none'>
         <div class="flex column producto">
           <img ng-src="img/{{producto.imagen}}" width="180px">
           <section class="flex column descripcion">
