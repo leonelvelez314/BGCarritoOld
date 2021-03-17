@@ -41,16 +41,25 @@ angular.module('starter.controllers', [])
     }
     $http.post('https://rolimapp.com:3000/usuarios', request).then(function(respuesta){
       console.log(respuesta)
+      if(respuesta.data.codigoRetorno === '0001')
+      {
+        $timeout(function() {
+          localStorage.setItem( 'token',  respuesta.data.token);
+          localStorage.setItem( 'email',  respuesta.data.usuario.email);
+          localStorage.setItem( 'nombre',  respuesta.data.usuario.nombre);          
+          $scope.closeLogin();
+        }, 1000);
+      }
+      
     }, function(errorResponse){
       console.log(errorResponse);
     });
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+    
   };
 })
 
 .controller('ProductsCtrl', function($scope) {
+  
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
