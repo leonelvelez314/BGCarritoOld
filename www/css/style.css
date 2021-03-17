@@ -1,1 +1,25 @@
 /* Empty. Add your own CSS if you like */
+.flex
+{
+    display: flex;
+}
+
+.row
+{
+    flex-direction: row;
+}
+
+.column
+{
+    flex-direction: column;
+}
+
+.producto
+{
+    align-items: center;
+}
+
+.descripcion
+{
+    align-items: center;
+}

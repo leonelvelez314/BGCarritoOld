@@ -61,8 +61,9 @@ angular.module('starter.controllers', [])
 .controller('ProductsCtrl', function($scope, $http) {
   
   $http.post('https://rolimapp.com:3000/productos', {transaccion:'generico', tipo:'4'}).then(function(respuesta){
-    console.log(respuesta.data)
+    
     $scope.productos  = respuesta.data.data;
+    
   }, function(errorResponse){
     console.log(errorResponse);
   });

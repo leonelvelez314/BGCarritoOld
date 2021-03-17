@@ -1,9 +1,17 @@
 <ion-view view-title="Products">
   <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="producto in productos" href="#/app/products/{{playlist.id}}">
-        {{producto.descripcion}}
+    <ion-list >
+      <ion-item  ng-repeat="producto in productos" href="#/app/products/{{playlist.id}}" lines='none'>
+        <div class="flex column producto">
+          <img ng-src="img/{{producto.imagen}}" width="180px">
+          <section class="flex column descripcion">
+              <h2>{{producto.descripcion}}</h2>
+              <p>{{producto.precio}}</p>
+          </section>
+        </div>
       </ion-item>
     </ion-list>
+
+ 
   </ion-content>
 </ion-view>
