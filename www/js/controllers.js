@@ -167,7 +167,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CarCtrl', function($scope) {
+.controller('CarCtrl', function($scope, $http) {
    
   $scope.productosSelecc  = JSON.parse(localStorage.getItem( 'productosSeleccionados'))
   
@@ -188,5 +188,24 @@ angular.module('starter.controllers', [])
     return cantidad;
   }
 
+  
+  
+  let token = localStorage.getItem( 'token')
+   let config = {'x-token': token}
+   var req = {
+    method: 'POST',
+    url: 'https://rolimapp.com:3000/planes',
+    headers: config,
+    data: {transaccion: 'consultarPlanes'}
+   } 
+  $scope.comprar = function()
+  {
+    $http(req).then(function(respuesta){
+      console.log(respuesta)
+      
+    }, function(errorResponse){
+      console.log(errorResponse);
+    });
+  }
 });
 
