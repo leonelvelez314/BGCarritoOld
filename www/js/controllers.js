@@ -10,7 +10,6 @@ angular.module('starter.controllers', [])
   //});
 
   // Form data for the login modal
-  $scope.loginData = {username:'', password:''};
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -29,33 +28,7 @@ angular.module('starter.controllers', [])
     $scope.modal.show();
   };
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-    let request = {
-      transaccion : 'autenticarUsuario',
-      datosUsuario : {
-        email : $scope.loginData.username,
-        password : $scope.loginData.password
-      }
-    }
-    $http.post('https://rolimapp.com:3000/usuarios', request).then(function(respuesta){
-      console.log(respuesta)
-      if(respuesta.data.codigoRetorno === '0001')
-      {
-        $timeout(function() {
-          localStorage.setItem( 'token',  respuesta.data.token);
-          localStorage.setItem( 'email',  respuesta.data.usuario.email);
-          localStorage.setItem( 'nombre',  respuesta.data.usuario.nombre);          
-          $scope.closeLogin();
-        }, 1000);
-      }
-      
-    }, function(errorResponse){
-      console.log(errorResponse);
-    });
-    
-  };
+  
 })
 
 .controller('ProductsCtrl', function($scope, $http) {
@@ -91,4 +64,39 @@ angular.module('starter.controllers', [])
     console.log(errorResponse);
   });
   
+})
+
+.controller('LoginCtrl', function($scope, $timeout,$http, $window) {
+
+  $scope.loginData = {username:'', password:''};
+
+  // Perform the login action when the user submits the login form
+  $scope.doLogin = function() {
+    console.log('Doing login', $scope.loginData);
+    let request = {
+      transaccion : 'autenticarUsuario',
+      datosUsuario : {
+        email : $scope.loginData.username,
+        password : $scope.loginData.password
+      }
+    }
+    $http.post('https://rolimapp.com:3000/usuarios', request).then(function(respuesta){
+      console.log(respuesta)
+      if(respuesta.data.codigoRetorno === '0001')
+      {
+        $timeout(function() {
+          localStorage.setItem( 'token',  respuesta.data.token);
+          localStorage.setItem( 'email',  respuesta.data.usuario.email);
+          localStorage.setItem( 'nombre',  respuesta.data.usuario.nombre);     
+          $window.location.href = '#/app/products'     
+          
+        }, 1000);
+      }
+      
+    }, function(errorResponse){
+      console.log(errorResponse);
+    });
+    
+  };
 });
+

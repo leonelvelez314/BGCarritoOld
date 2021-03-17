@@ -27,7 +27,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+  
+
   $stateProvider
+ 
+
+  .state('login', {
+    url: '',
+    
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
+    
+  })
 
     .state('app', {
     url: '/app',
@@ -54,6 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+   
   .state('app.detalle', {
     url: '/products/:productid',
     views: {
